@@ -1,1026 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohamad Shukor Bin Abdul Rahim | Academic Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    :root {
-      --primary: #1565c0;
-      --primary-light: #5e92f3;
-      --primary-dark: #003c8f;
-      --light: #f5f5f5;
-      --dark: #263238;
-      --darker: #0d47a1;
-      --gray: #757575;
-      --glow: 0 0 10px rgba(21, 101, 192, 0.3);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --blue-bg: linear-gradient(135deg, #f5f5f5 0%, #e3f2fd 100%);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--blue-bg);
-      color: var(--dark);
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    ::selection {
-      background: var(--primary-light);
-      color: white;
-    }
-
-    /* Navigation */
-    nav {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 3rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(21, 101, 192, 0.2);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: var(--transition);
-    }
-
-    nav.scrolled {
-      padding: 1rem 3rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: var(--primary);
-      font-family: 'Quicksand', sans-serif;
-      transition: var(--transition);
-    }
-
-    nav .logo span {
-      color: var(--primary-dark);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul li a {
-      color: var(--dark);
-      text-decoration: none;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 1px;
-      transition: var(--transition);
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
-    }
-
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      width: 100%;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: var(--primary);
-    }
-
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: var(--primary);
-      margin: 5px;
-      transition: var(--transition);
-    }
-
-    /* Hero Section */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 100px 2rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="%231565c0" opacity="0.05"><circle cx="50" cy="50" r="40" /></svg>');
-      background-size: 200px;
-      z-index: -1;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(21, 101, 192, 0.2);
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--primary-dark);
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .hero h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-      font-weight: 400;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: var(--dark);
-    }
-
-    .hero-image {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      margin-left: 1rem;
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Sections */
-    section {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out, transform 0.5s ease;
-      transform: translateY(30px);
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 40px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border-left: 5px solid var(--primary);
-    }
-
-    section.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var(--primary-dark);
-      position: relative;
-      display: inline-block;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--primary-light);
-      border-radius: 3px;
-    }
-
-    .section-content {
-      margin-bottom: 20px;
-      line-height: 1.6;
-      color: var(--dark);
-    }
-
-    .list {
-      padding-left: 0;
-      list-style: none;
-    }
-
-    .list li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 15px;
-    }
-
-    .list li::before {
-      content: '🔹';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 30px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary-light);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -30px;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid white;
-      box-shadow: 0 0 0 2px var(--primary);
-    }
-
-    .timeline-date {
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 5px;
-    }
-
-    .timeline-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--dark);
-    }
-
-    .timeline-subtitle {
-      font-style: italic;
-      color: var(--gray);
-      margin-bottom: 10px;
-    }
-
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .skill {
-      background: #e3f2fd;
-      color: var(--primary-dark);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .skill:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .project-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 30px;
-      transition: var(--transition);
-      border: 1px solid rgba(21, 101, 192, 0.1);
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      border-color: var(--primary-light);
-    }
-
-    .project-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 20px;
-    }
-
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: var(--primary-dark);
-    }
-
-    .project-description {
-      margin-bottom: 15px;
-      color: var(--gray);
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .project-tag {
-      background: #e3f2fd;
-      color: var(--primary-dark);
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 0.8rem;
-    }
-
-    .publication-item {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed #e0e0e0;
-    }
-
-    .publication-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--dark);
-    }
-
-    .publication-authors {
-      font-style: italic;
-      color: var(--gray);
-      margin-bottom: 5px;
-    }
-
-    .publication-link {
-      color: var(--primary);
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-block;
-      font-weight: 600;
-    }
-
-    .publication-link:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .contact-item {
-      flex: 1;
-      min-width: 200px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .contact-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .contact-icon {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
-
-    .contact-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--primary-dark);
-    }
-
-    /* Floating elements */
-    .floating-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .element {
-      position: absolute;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="%231565c0" opacity="0.6"><circle cx="12" cy="12" r="10"/></svg>');
-      background-repeat: no-repeat;
-      width: 30px;
-      height: 30px;
-      animation: float 15s infinite linear;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(-1000px) rotate(720deg);
-      }
-    }
-
-    /* Table styles */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-
-    th, td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    th {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    tr:nth-child(even) {
-      background-color: rgba(62, 146, 204, 0.1);
-    }
-
-    .table-responsive {
-      overflow-x: auto;
-    }
-
-    @media (max-width: 900px) {
-      nav {
-        padding: 15px 20px;
-      }
-
-      nav ul {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: white;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        transition: var(--transition);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      }
-
-      nav ul.active {
-        left: 0;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .hamburger.active div:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-      }
-
-      .hamburger.active div:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active div:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero h2 {
-        font-size: 1.2rem;
-      }
-
-      section {
-        padding: 30px 20px;
-        margin: 30px 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ts. Dr. Mohamad Shukor - Academic Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c1f3c 0%, #1a3658 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            padding-top: 100px;
+        }
+        
+        /* PV modules background animation */
+        .pv-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.07;
+            pointer-events: none;
+        }
+        
+        .pv-module {
+            position: absolute;
+            background: linear-gradient(45deg, #2c5364, #203a43, #0f2027);
+            border: 1px solid rgba(76, 195, 247, 0.3);
+            border-radius: 5px;
+        }
+        
+        .pv-cell {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Horizontal Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(12, 31, 60, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            padding: 12px 20px;
+            background: transparent;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-button i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .nav-button:hover {
+            background: rgba(79, 195, 247, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.active {
+            background: #4fc3f7;
+            color: #0c1f3c;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 220px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 5px solid #0c1f3c;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #0c1f3c;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #1a3658;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #0c1f3c;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #4fc3f7;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #0c1f3c;
+            width: 25px;
+        }
+        
+        .expertise-list {
+            list-style-type: none;
+        }
+        
+        .expertise-list li {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .expertise-list li.selected {
+            background: #bbdefb;
+            font-weight: bold;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .expertise-list i {
+            margin-right: 10px;
+            color: #2196f3;
+        }
+        
+        .position-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #0c1f3c;
+            color: white;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .position-badge.current {
+            background: #f50057;
+        }
+        
+        .education-table, .awards-table, .publications-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .education-table th, .education-table td, 
+        .awards-table th, .awards-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .education-table th, .awards-table th {
+            background-color: #0c1f3c;
+            color: white;
+        }
+        
+        .education-table tr:nth-child(even), 
+        .awards-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .publications-list li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 10px;
+            }
+            
+            .nav-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-button i {
+                margin-right: 5px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            body {
+                padding-top: 130px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Floating elements background -->
-  <div class="floating-elements" id="floatingElements"></div>
+    <!-- PV Modules Background -->
+    <div class="pv-background" id="pvBackground"></div>
 
-  <nav id="navbar">
-    <div class="logo">Mohamad <span>Shukor</span></div>
-    <ul class="nav-links">
-      <li><a onclick="showSection('about')" class="active">About</a></li>
-      <li><a onclick="showSection('education')">Education</a></li>
-      <li><a onclick="showSection('expertise')">Expertise</a></li>
-      <li><a onclick="showSection('experience')">Experience</a></li>
-      <li><a onclick="showSection('supervision')">Supervision</a></li>
-      <li><a onclick="showSection('publications')">Publications</a></li>
-      <li><a onclick="showSection('contact')">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
-
-  <div class="hero">
-    <div class="hero-content">
-      <img src="https://via.placeholder.com/200" alt="Mohamad Shukor" class="hero-image">
-      <h1>Mohamad Shukor Bin Abdul Rahim</h1>
-      <h2>Lecturer at Universiti Malaysia Perlis</h2>
-      <p>Specializing in Control, Sensors & Instrumentation, and Artificial Intelligence and Optimization with extensive experience in academic teaching and research.</p>
-      <div>
-        <a href="#contact" class="btn">Contact Me</a>
-        <a href="#publications" class="btn btn-outline">View Publications</a>
-      </div>
-    </div>
-  </div>
-
-  <section id="about" class="active">
-    <div class="section-title">About Me</div>
-    <div class="section-content">
-      I am a dedicated lecturer at Universiti Malaysia Perlis (UniMAP) with expertise in Control, Sensors & Instrumentation, and Artificial Intelligence and Optimization. My research focuses on practical applications in electrical engineering with an emphasis on innovative solutions.
-    </div>
-    
-    <div class="section-title">Professional Appointments</div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">March 2019 – September 2020</div>
-        <div class="timeline-title">Program Chairman</div>
-        <div class="timeline-subtitle">Center for Diploma Studies, UNIMAP</div>
-      </div>
-    </div>
-    
-    <div class="section-title">Awards & Recognition</div>
-    <div class="table-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Name of Award</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2014</td>
-            <td>Graduate Engineer</td>
-          </tr>
-          <tr>
-            <td>2019</td>
-            <td>Graduate Technologist</td>
-          </tr>
-          <tr>
-            <td>2022</td>
-            <td>Professional Technologist</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="section-title">Education</div>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Ongoing</div>
-        <div class="timeline-title">Doctor of Philosophy (Electrical System Engineering)</div>
-        <div class="timeline-subtitle">University Malaysia Perlis</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2016</div>
-        <div class="timeline-title">M.Sc. (Electrical System Engineering)</div>
-        <div class="timeline-subtitle">University Malaysia Perlis</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2014</div>
-        <div class="timeline-title">B.Eng (Hons) (Electrical System Engineering)</div>
-        <div class="timeline-subtitle">University Malaysia Perlis</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2011</div>
-        <div class="timeline-title">Dip. (Electrical System Engineering)</div>
-        <div class="timeline-subtitle">University Malaysia Perlis</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="expertise">
-    <div class="section-title">Expertise Areas</div>
-    <div class="skills-container">
-      <div class="skill">Control, Sensors & Instrumentation</div>
-      <div class="skill">Artificial Intelligence and Optimization</div>
-      <div class="skill">High Voltage</div>
-      <div class="skill">Power System</div>
-      <div class="skill">Power Electronics and Drives</div>
-      <div class="skill">Renewable Energy</div>
-      <div class="skill">Image & Signal Processing</div>
-      <div class="skill">Robotic & Automation</div>
-    </div>
-    
-    <div class="section-title">Teaching Experience</div>
-    <div class="table-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Academic Session</th>
-            <th>Course Code</th>
-            <th>Course Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2016/17</td>
-            <td>DET 115</td>
-            <td>Electronic Devices</td>
-          </tr>
-          <tr>
-            <td>2016/17</td>
-            <td>DET116</td>
-            <td>Computer Programming</td>
-          </tr>
-          <tr>
-            <td>2017/18</td>
-            <td>DET 115</td>
-            <td>Electronic Devices</td>
-          </tr>
-          <tr>
-            <td>2017/18</td>
-            <td>DET 205</td>
-            <td>Electrical Machine and Applications 2</td>
-          </tr>
-          <tr>
-            <td>2018/19</td>
-            <td>DET 117</td>
-            <td>Automatic Computer Aided Drafting (AUTOCAD)</td>
-          </tr>
-          <tr>
-            <td>2018/19</td>
-            <td>DET 218</td>
-            <td>Analogue Electronics</td>
-          </tr>
-          <tr>
-            <td>2019/20</td>
-            <td>DET 115</td>
-            <td>Electronic Devices</td>
-          </tr>
-          <tr>
-            <td>2019/20</td>
-            <td>DET 218</td>
-            <td>Analogue Electronics</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="section-title">Professional Experience</div>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2016 - Present</div>
-        <div class="timeline-title">Lecturer</div>
-        <div class="timeline-subtitle">Universiti Malaysia Perlis</div>
-        <div class="section-content">
-          Teaching various electrical engineering courses and conducting research in control systems and AI optimization.
+    <!-- Horizontal Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <button class="nav-button active" onclick="showTab('education')">
+                <i class="fas fa-graduation-cap"></i> Education
+            </button>
+            <button class="nav-button" onclick="showTab('expertise')">
+                <i class="fas fa-flask"></i> Expertise
+            </button>
+            <button class="nav-button" onclick="showTab('awards')">
+                <i class="fas fa-award"></i> Awards
+            </button>
+            <button class="nav-button" onclick="showTab('research')">
+                <i class="fas fa-microscope"></i> Research
+            </button>
+            <button class="nav-button" onclick="showTab('publications')">
+                <i class="fas fa-book"></i> Publications
+            </button>
+            <button class="nav-button" onclick="showTab('teaching')">
+                <i class="fas fa-chalkboard-teacher"></i> Teaching
+            </button>
+            <button class="nav-button" onclick="showTab('supervision')">
+                <i class="fas fa-users"></i> Supervision
+            </button>
+            <button class="nav-button" onclick="showTab('contact')">
+                <i class="fas fa-envelope"></i> Contact
+            </button>
         </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">March 2019 – September 2020</div>
-        <div class="timeline-title">Program Chairman</div>
-        <div class="timeline-subtitle">Center for Diploma Studies, UNIMAP</div>
-        <div class="section-content">
-          Managed academic programs and coordinated diploma studies at the Center for Diploma Studies.
+    </nav>
+
+    <div class="container">
+        <header>
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Ts. Dr. Mohamad Shukor" class="profile-img">
+            <h1>Ts. Dr. MOHAMAD SHUKOR BIN ABDUL RAHIM</h1>
+            <h2>Senior Lecturer  </h2>
+            <h3>Faculty of Electrical Engineering & Technology (FKTE) </h3>
+
+        </header>
+
+        <!-- Education Tab -->
+        <div class="card tab-content active" id="education">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <table class="education-table">
+                <tr>
+                    <th>Year</th>
+                    <th>University</th>
+                    <th>Degree</th>
+                </tr>
+                <tr>
+                    <td>2025</td>
+                    <td>Universiti Malaysia Perlis</td>
+                    <td>Doctor of Philosophy (Electrical System Engineering)</td>
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    <td>Universiti Malaysia Perlis</td>
+                    <td>M.Sc. (Electrical System Engineering)</td>
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    <td>Universiti Malaysia Perlis</td>
+                    <td>B.Eng (Hons) (Electrical System Engineering)</td>
+                </tr>
+                <tr>
+                    <td>2011</td>
+                    <td>Universiti Malaysia Perlis</td>
+                    <td>Dip. (Electrical System Engineering)</td>
+                </tr>
+            </table>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="supervision">
-    <div class="section-title">Student Supervision</div>
-    
-    <div class="section-title">Final Year Projects</div>
-    <div class="table-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Role</th>
-            <th>Research Title</th>
-            <th>Student Name</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Power Saving System And Visitor Counter</td>
-            <td>Ummi Sufiyah Binti Mokhtar</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Analog Capacitance Meter</td>
-            <td>Umi Kalsom Binti Nasri</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Street Light Glows On Detecting Vehicle Movements</td>
-            <td>Syaridatul Athirah Bt Zulkifli</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Temperature Based Fan Speed Control</td>
-            <td>Wan Muhammad Izzuddin Bin Wan Zahalan</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Ac Motor Speed Control Using Triac</td>
-            <td>Mohammad Azhan Fikry Bin Md Asmadi</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>Main supervisor</td>
-            <td>Automatic Charger Battery With Display</td>
-            <td>Aina Sabrina Binti Mohamad Idbal</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Machine Overheat Detection With Alert</td>
-            <td>Mohammad Shafiq Amir Bin Zahari</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Automatic Elevator With Overload Alert</td>
-            <td>Nor Fatihah Binti Martali</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Solar Panel With Sun Position Tracking</td>
-            <td>Muhammad Faiz Izzuddin Bin Halim</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Load Sensing Seats With Light Fan Control</td>
-            <td>Zul Azhan Hakimi Bin Wahiduddin</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Induction Motor Speed Controller Project</td>
-            <td>Mohammad Aiman Bin Mohammad Zain</td>
-            <td>Graduated</td>
-          </tr>
-          <tr>
-            <td>2018</td>
-            <td>Main supervisor</td>
-            <td>Rain Sensing Automatic Car Wiper</td>
-            <td>Aiman Ismail Bin Mohamed Jamil</td>
-            <td>Graduated</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="publications">
-    <div class="section-title">Publications</div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Research Profile Links</div>
-      <div class="section-content">
-        <p><a href="https://www.scopus.com/authid/detail.uri?authorId=57216323171" target="_blank" class="publication-link">Scopus Profile</a></p>
-        <p><a href="https://scholar.google.com/citations?user=Cbzq4fQAAAJ&hl=en&authuser=1" target="_blank" class="publication-link">Google Scholar Profile</a></p>
-        <p><a href="https://www.researchgate.net/profile/Mohamad-Abdul-Rahim" target="_blank" class="publication-link">ResearchGate Profile</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-title">Contact Information</div>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
+        <!-- Expertise Tab -->
+        <div class="card tab-content" id="expertise">
+            <h3><i class="fas fa-flask"></i> Research Expertise</h3>
+            <p>Specializing in the following areas:</p>
+            <ul class="expertise-list">
+                <li class="selected"><i class="fas fa-solar-panel"></i> Renewable Energy</li>
+                <li class="selected"><i class="fas fa-sliders-h"></i> Control, Sensors & Instrumentation</li>
+                <li class="selected"><i class="fas fa-brain"></i> Artificial Intelligence and Optimization</li>
+            </ul>
         </div>
-        <div class="contact-title">Email</div>
-        <div class="section-content">mshukorrahim@unimap.edu.my</div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fas fa-university"></i>
+
+        <!-- Awards Tab -->
+        <div class="card tab-content" id="awards">
+            <h3><i class="fas fa-award"></i> Awards & Recognition</h3>
+            
+            <h4>Professional Awards</h4>
+            <table class="awards-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Award</th>
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    <td>Graduate Engineer</td>
+                </tr>
+                <tr>
+                    <td>2019</td>
+                    <td>Graduate Technologist</td>
+                </tr>
+                <tr>
+                    <td>2022</td>
+                    <td>Professional Technologist</td>
+                </tr>
+            </table>
+            
+            <h4>Research Awards</h4>
+            <ul class="expertise-list">
+                <li>EKSPO REKACIPTA UNIMAP (EREKA 2025) -- GOLD - ADAPTIVE WATER COOLING SYSTEM FOR PHOTOVOLTAIC MODULES USING AI OPTIMIZATION</li>
+            </ul>
         </div>
-        <div class="contact-title">University</div>
-        <div class="section-content">Universiti Malaysia Perlis</div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fas fa-map-marker-alt"></i>
+
+        <!-- Research Tab -->
+        <div class="card tab-content" id="research">
+            <h3><i class="fas fa-microscope"></i> Research Activities</h3>
+            
+            <h4>Research Grants</h4>
+            <table class="awards-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Role</th>
+                    <th>Grant Details</th>
+                </tr>
+                <tr>
+                    <td>2024-2026</td>
+                    <td>Co-Researcher (PV field researcher)</td>
+                    <td>IMAP GRANT Design and Development of Testing Tool for Solar Harvesting Application (RM 100,000)</td>
+                </tr>
+            </table>
+            
+            <h4>Professional Appointments</h4>
+            <table class="awards-table">
+                <tr>
+                    <th>Date</th>
+                    <th>Position</th>
+                    <th>Organization</th>
+                </tr>
+                <tr>
+                    <td>MARCH 2019 - SEPT 2020</td>
+                    <td>Program Chairman</td>
+                    <td>Center for Diploma Studies, UNIMAP</td>
+                </tr>
+            </table>
         </div>
-        <div class="contact-title">Location</div>
-        <div class="section-content">Perlis, Malaysia</div>
-      </div>
+
+        <!-- Publications Tab -->
+        <div class="card tab-content" id="publications">
+            <h3><i class="fas fa-book"></i> Publications</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-external-link-alt"></i>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57216323171" target="_blank">Scopus Profile</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-external-link-alt"></i>
+                <a href="https://scholar.google.com/citations?user=Cbzq4fQAAAAJ&hl=en&authuser=1" target="_blank">Google Scholar Profile</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-external-link-alt"></i>
+                <a href="https://www.researchgate.net/profile/Mohamad-Abdul-Rahim" target="_blank">ResearchGate Profile</a>
+            </div>
+            
+            <h4>Selected Publications</h4>
+            <ol class="publications-list">
+                <li>New bio-based nanolubricants for turning of Inconel 718 towards improvement of tool wear resistance and specific cutting energy (2019)</li>
+                <li>Determination of soft starter firing angle performance to mitigate motor high inrush current using current limitation method (2020)</li>
+                <li>Technologies of solar tracking systems: A review (2020)</li>
+                <li>Critical review: Adaptive pole assignment PID controller on DC-DC converters (2020)</li>
+                <li>Power Generation Improvement using Active Water Cooling for Photovoltaic (PV) Panel (2021)</li>
+                <li>Water-Based Energy Production Using PI Controller (2021)</li>
+                <li>Fundamental study on the impacts of water-cooling and accumulated dust on photovoltaic module performance (2022)</li>
+                <li>Modeling, experimental investigation and real-time control of active water cooling system for photovoltaic module (2024) [WOS Q3]</li>
+                <li>Review of Control Strategies for Improving the Photovoltaic Electrical Efficiency by Hybrid Active Cooling (2024)</li>
+                <li>Experimental investigation on improving photovoltaic module efficiency using adaptive fuzzy-PID water cooling (2024) [WOS Q2]</li>
+            </ol>
+        </div>
+
+        <!-- Teaching Tab -->
+        <div class="card tab-content" id="teaching">
+            <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h3>
+            
+            <h4>Undergraduate Courses</h4>
+            <table class="awards-table">
+                <tr>
+                    <th>Academic Session</th>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                </tr>
+                <tr>
+                    <td>2016/17</td>
+                    <td>DET 115</td>
+                    <td>Electronic Devices</td>
+                </tr>
+                <tr>
+                    <td>2016/17</td>
+                    <td>DET 116</td>
+                    <td>Computer Programming</td>
+                </tr>
+                <tr>
+                    <td>2017/18</td>
+                    <td>DET 115</td>
+                    <td>Electronic Devices</td>
+                </tr>
+                <tr>
+                    <td>2017/18</td>
+                    <td>DET 205</td>
+                    <td>Electrical Machine and Applications 2</td>
+                </tr>
+                <tr>
+                    <td>2018/19</td>
+                    <td>DET 117</td>
+                    <td>Automatic Computer Aided Drafting (AUTOCAD)</td>
+                </tr>
+                <tr>
+                    <td>2018/19</td>
+                    <td>DET 218</td>
+                    <td>Analogue Electronics</td>
+                </tr>
+                <tr>
+                    <td>2019/20</td>
+                    <td>DET 115</td>
+                    <td>Electronic Devices</td>
+                </tr>
+                <tr>
+                    <td>2019/20</td>
+                    <td>DET 218</td>
+                    <td>Analogue Electronics</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Supervision Tab -->
+        <div class="card tab-content" id="supervision">
+            <h3><i class="fas fa-users"></i> Student Supervision</h3>
+            
+            <h4>Final Year Projects</h4>
+            <table class="awards-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Student</th>
+                    <th>Project Title</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Ummi Sufiyah Binti Mokhtar</td>
+                    <td>Power Saving System And Visitor Counter</td>
+                    <td>Graduated</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Umi Kalsom Binti Nasri</td>
+                    <td>Analog Capacitance Meter</td>
+                    <td>Graduated</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Syaridatul Athirah Bt Zulkifli</td>
+                    <td>Street Light Glows On Detecting Vehicle Movements</td>
+                    <td>Graduated</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Wan Muhammad Izzuddin Bin Wan Zahalan</td>
+                    <td>Temperature Based Fan Speed Control</td>
+                    <td>Graduated</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Mohammad Azhan Fikry Bin Md Asmadi</td>
+                    <td>Ac Motor Speed Control Using Triac</td>
+                    <td>Graduated</td>
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    <td>Aina Sabrina Binti Mohamad Iqbal</td>
+                    <td>Automatic Charger Battery With Display</td>
+                    <td>Graduated</td>
+                </tr>
+            </table>
+            <p>And several more successful supervisions from 2018...</p>
+        </div>
+
+        <!-- Contact Tab -->
+        <div class="card tab-content" id="contact">
+            <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:mshukorrahim@unimap.edu.my">mshukorrahim@unimap.edu.my</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>FTK Elektrik, Universiti Malaysia Perlis</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+604 979 8000</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="#">Faculty Website</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Ts. Dr. Mohamad Shukor Bin Abdul Rahim - Academic Profile</p>
+            <p>FTK Elektrik, Universiti Malaysia Perlis</p>
+        </footer>
     </div>
-    
-    <div class="section-title">Position</div>
-    <div class="section-content">
-      <ul class="list">
-        <li>Lecturer</li>
-        <li>Faculty of Engineering Technology, UniMAP</li>
-        <li>Expertise: Control, Sensors & Instrumentation, Artificial Intelligence and Optimization</li>
-      </ul>
-    </div>
-  </section>
 
-  <script>
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-      });
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Show section function
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      document.getElementById(id).classList.add('active');
-      
-      // Add active class to the clicked nav link
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        if (link.getAttribute('onclick').includes(id)) {
-          link.classList.add('active');
+    <script>
+        // Function to show the selected tab
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update active tab button
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Find the button that was clicked and make it active
+            event.currentTarget.classList.add('active');
+            
+            // Scroll to top of the content
+            window.scrollTo({
+                top: 100,
+                behavior: 'smooth'
+            });
         }
-      });
-      
-      window.scrollTo({ top: document.getElementById(id).offsetTop - 80, behavior: 'smooth' });
-    }
-
-    // Create floating elements
-    document.addEventListener('DOMContentLoaded', function() {
-      const floatingElements = document.getElementById('floatingElements');
-      if (floatingElements) {
-        for (let i = 0; i < 20; i++) {
-          const element = document.createElement('div');
-          element.classList.add('element');
-          element.style.left = `${Math.random() * 100}%`;
-          element.style.top = `${Math.random() * 100}%`;
-          element.style.opacity = Math.random() * 0.5 + 0.2;
-          element.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-          element.style.animationDuration = `${Math.random() * 20 + 10}s`;
-          element.style.animationDelay = `${Math.random() * 5}s`;
-          floatingElements.appendChild(element);
+        
+        // Create PV modules background
+        function createPVBackground() {
+            const pvBackground = document.getElementById('pvBackground');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            // Create PV modules
+            for (let i = 0; i < 40; i++) {
+                const moduleSize = 80 + Math.random() * 70;
+                const pvModule = document.createElement('div');
+                pvModule.className = 'pv-module';
+                pvModule.style.width = `${moduleSize}px`;
+                pvModule.style.height = `${moduleSize * 0.6}px`;
+                pvModule.style.left = `${Math.random() * width}px`;
+                pvModule.style.top = `${Math.random() * height}px`;
+                pvModule.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+                
+                pvBackground.appendChild(pvModule);
+                
+                // Create cells within the module
+                const rows = 3;
+                const cols = 6;
+                const cellWidth = moduleSize / cols;
+                const cellHeight = (moduleSize * 0.6) / rows;
+                
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        const pvCell = document.createElement('div');
+                        pvCell.className = 'pv-cell';
+                        pvCell.style.width = `${cellWidth - 2}px`;
+                        pvCell.style.height = `${cellHeight - 2}px`;
+                        pvCell.style.left = `${c * cellWidth + 1}px`;
+                        pvCell.style.top = `${r * cellHeight + 1}px`;
+                        
+                        pvModule.appendChild(pvCell);
+                    }
+                }
+            }
         }
-      }
-    });
-  </script>
+        
+        // Initialize the page
+        window.onload = function() {
+            createPVBackground();
+        };
+    </script>
 </body>
 </html>
